@@ -5,6 +5,8 @@ package br.ufs.dcomp.ExemploTcpJava;
 
 import java.net.*;
 import java.io.*;
+import java.util.*;
+
 public class TCPServer{
     public static void main(String[] args){
         
@@ -22,6 +24,7 @@ public class TCPServer{
             
             byte[] buf = new byte[20]; // buffer de recepção
 
+            while(true) {
             System.out.print("[ Aguardando recebimento de mensagem   ..............  ");
             is.read(buf); // Operação bloqueante (aguardando chegada de dados)
             System.out.println("[OK] ]");
@@ -29,13 +32,16 @@ public class TCPServer{
             String msg = new String(buf); // Mapeando vetor de bytes recebido para String
             
             System.out.println("  Mensagem recebida: "+ msg);
+            System.out.println("[ ..........................................  ]");
             
-            System.out.print("[ Enviando mensagem    ..............................  ");
-            String msg_client = "Tudo bem?";
+            System.out.print("[ Digite a mensagem a ser enviada:  ");
+            Scanner sc = new Scanner(System.in);
+            String msg_client = sc.nextLine();
             byte[] buf_client = msg_client.getBytes();
+            System.out.print("[ Enviando mensagem    ..............................  ");
             os.write(buf_client);
             System.out.println("[OK] ]");
-            
+            }
             
         }catch(Exception e){System.out.println(e);}    
         System.out.println("[ FIM ]");

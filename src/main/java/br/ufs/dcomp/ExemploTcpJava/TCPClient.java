@@ -5,6 +5,8 @@ package br.ufs.dcomp.ExemploTcpJava;
 
 import java.net.*;
 import java.io.*;
+import java.util.*;
+
 public class TCPClient{
     public static void main(String[] args){
         try {
@@ -27,7 +29,6 @@ public class TCPClient{
             System.out.println("[OK] ]");
             
             msg = new String(rp_buf); // Mapeando vetor de bytes recebido para String
-            
             System.out.println("  Mensagem recebida: "+ msg);
             
             
