@@ -19,6 +19,7 @@ public class TCPServer{
             
             InputStream is = sock.getInputStream(); //Canal de entrada de dados
             OutputStream os = sock.getOutputStream(); //Canal de saída de dados
+            
             byte[] buf = new byte[20]; // buffer de recepção
 
             System.out.print("[ Aguardando recebimento de mensagem   ..............  ");
@@ -28,6 +29,14 @@ public class TCPServer{
             String msg = new String(buf); // Mapeando vetor de bytes recebido para String
             
             System.out.println("  Mensagem recebida: "+ msg);
+            
+            System.out.print("[ Enviando mensagem    ..............................  ");
+            String msg_client = "Tudo bem?";
+            byte[] buf_client = msg_client.getBytes();
+            os.write(buf_client);
+            System.out.println("[OK] ]");
+            
+            
         }catch(Exception e){System.out.println(e);}    
         System.out.println("[ FIM ]");
     }
